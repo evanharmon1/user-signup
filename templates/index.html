@@ -4,29 +4,17 @@
 
 <form action="/welcome" method="post">
     <label for="username">Username</label>
-    <input type="text" name="username" id="username" value="{{ username }}"">
-    {% if username_error %}
-        <span class="error">{{username_error}}</span>
-    {% endif %}
-    <br>
+    <input type="text" name="username" id="username" value="{{ username }}""><span class="error">{{ username_error }}</span><br>
+
     <label for="password">Password</label>
-    <input type="password" name="password" id="password">
-    {% if password_error %}
-        <span class="error">{{password_error}}</span>
-    {% endif %}
-    <br>
+    <input type="password" name="password" id="password"><span class="error">{{ password_error }}</span><br>
+
     <label for="verify_password">Verify Password</label>
-    <input type="password" name="verify_password" id="verify_password">
-    {% if verify_password_error %}
-        <span class="error">{{verify_password_error}}</span>
-    {% endif %}
-    <br>
+    <input type="password" name="verify_password" id="verify_password"><span class="error">{{ verify_password_error }}</span><br>
+
     <label for="email">Email (optional)</label>
-    <input type="text" name="email" id="email" value="{{ email }}">
-    {% if email_error %}
-        <span class="error">{{email_error}}</span>
-    {% endif %}
-    <br>
+    <input type="text" name="email" id="email" value="{{ email }}"><span class="error">{{ email_error }}</span><br>
+    
     <input type="submit" value="Submit">
 </form>
 

@@ -7,12 +7,14 @@ app.config['DEBUG'] = True
 
 @app.route('/')
 def index():
-    # Parse parameters
+    # Initialize strings as global empty strings
     global username_error, password_error, verify_password_error, email_error
-    username_error = request.args.get('username_error')
-    password_error = request.args.get('password_error')
-    verify_password_error = request.args.get('verify_password_error')
-    email_error = request.args.get('email_error')
+    
+    # Parse parameters
+    username_error = request.args.get('username_error', default='')
+    password_error = request.args.get('password_error', default='')
+    verify_password_error = request.args.get('verify_password_error', default='')
+    email_error = request.args.get('email_error', default='')
     username = request.args.get('username', default='')
     email = request.args.get('email', default='')
 
@@ -25,14 +27,7 @@ def welcome():
     username = request.form['username']
     password = request.form['password']
     verify_password = request.form['verify_password']
-    email = request.form.get('email')
-
-    # Initialize strings as global empty strings
-    global username_error, password_error, verify_password_error, email_error
-    username_error = ''
-    password_error = ''
-    verify_password_error = ''
-    email_error = ''
+    email = request.form['email']
     
     # Validate form values 
     if not validate(username, password, verify_password, email):
@@ -52,7 +47,13 @@ def validate(username, password, verify_password, email):
     # Initialize error variables as global
     global username_error, password_error, verify_password_error, email_error
 
-    # Validate each form field for length, whitespace, matching passwords, and email form
+    # Reset error variables to ''
+    username_error = ''
+    password_error = ''
+    verify_password_error = ''
+    email_error = ''
+
+    # Validate each form field for length, whitespace, matching passwords, and email syntax
     if not valid.match(username):
         username_error = "That's not a valid username"
     if not valid.match(password):
