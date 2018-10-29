@@ -6,25 +6,25 @@
     <label for="username">Username</label>
     <input type="text" name="username" id="username" value="{{ username }}"">
     {% if username_error %}
-        {{username_error}}
+        <span class="error">{{username_error}}</span>
     {% endif %}
     <br>
     <label for="password">Password</label>
     <input type="password" name="password" id="password">
-    {% if username_error %}
-        {{password_error}}
+    {% if password_error %}
+        <span class="error">{{password_error}}</span>
     {% endif %}
     <br>
     <label for="verify_password">Verify Password</label>
     <input type="password" name="verify_password" id="verify_password">
-    {% if username_error %}
-        {{verify_password_error}}
+    {% if verify_password_error %}
+        <span class="error">{{verify_password_error}}</span>
     {% endif %}
     <br>
     <label for="email">Email (optional)</label>
     <input type="text" name="email" id="email" value="{{ email }}">
     {% if email_error %}
-        {{email_error}}
+        <span class="error">{{email_error}}</span>
     {% endif %}
     <br>
     <input type="submit" value="Submit">
